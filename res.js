@@ -1,8 +1,8 @@
 'use strict';
 
-exports.ok = function(values, res){
+exports.ok = function(values, res,status){
     var data = {
-        'status' : 200,
+        'status' : status,
         'values': values
     };
 

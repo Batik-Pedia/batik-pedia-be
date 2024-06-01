@@ -14,7 +14,7 @@ exports.getAllKatalogBatik = function(req, res){
     connection.query("SELECT * FROM katalog_batik", function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok({ message: 'Internal Server Error' }, res, 500);
         } else {
             response.ok(rows, res);
         }
@@ -27,12 +27,51 @@ exports.getKatalogBatikId = function(req, res){
     connection.query("SELECT * FROM katalog_batik WHERE idBatik = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
+            res.ok({ message: 'Internal Server Error' }, res, 500);
+        } else {
+            if (rows.length === 0) {
+                response.status(404).json({ message: 'Data not found' });
+            } else {
+                response.ok(rows, res);
+            }
+        }
+    });
+};
+
+exports.addKatalogBatik = function(req, res){
+    var namaBatik = req.body.namaBatik;
+    var detailBatik = req.body.detailBatik;
+    var sejarahBatik = req.body.sejarahBatik;
+    var penggunaan = req.body.penggunaan;
+    var makna = req.body.makna;
+    var image = req.body.image;
+    var lat = req.body.lat;
+    var lon = req.body.lon;
+
+    connection.query("INSERT INTO katalog_batik (namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon) VALUES(?,?,?,?,?,?,?,?)", 
+    [namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok({ message: 'Internal Server Error' }, res, 500);
+        } else {
+
+            response.ok(rows, res,201)
+        }
+    });
+
+}
+
+exports.deleteKatalogId = function(req, res){
+    let id = req.body.idBatik
+    connection.query("DELETE FROM katalog_batik WHERE idBatik =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
             res.status(500).json({ message: 'Internal Server Error' });
         } else {
             if (rows.length === 0) {
-                res.status(404).json({ message: 'Data not found' });
+                response.status(404).json({ message: 'Data not found' });
             } else {
-                response.ok(rows, res);
+                response.ok("Succesfuly delete", res);
             }
         }
     });
@@ -47,7 +86,7 @@ exports.getAllBerita = function(req, res){
     connection.query("SELECT * FROM berita", function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.status(500).json({ message: 'Internal Server Error' });
         } else {
             response.ok(rows, res);
         }
@@ -63,9 +102,45 @@ exports.getBeritaId = function(req, res){
             res.status(500).json({ message: 'Internal Server Error' });
         } else {
             if (rows.length === 0) {
-                res.status(404).json({ message: 'Data not found' });
+                response.status(404).json({ message: 'Data not found' });
             } else {
                 response.ok(rows, res);
+            }
+        }
+    });
+};
+
+exports.addBerita = function(req, res){
+   var namaBerita = req.body.namaBerita
+   var tglBerita = req.body.tglBerita
+   var lokasiBerita = req.body.lokasiBerita
+   var urlBerita = req.body.urlBerita
+   var imageBerita = req.body.imageBerita
+
+    connection.query("INSERT INTO berita (namaBerita, tglBerita, lokasiBerita, urlBerita, imageBerita) VALUES(?,?,?,?,?)", 
+    [namaBerita, tglBerita, lokasiBerita, urlBerita,imageBerita], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok({ message: 'Internal Server Error' }, res, 500);
+        } else {
+
+            response.ok(rows, res,201)
+        }
+    });
+
+}
+
+exports.deleteBeritaId = function(req, res){
+    let id = req.body.idBerita
+    connection.query("DELETE FROM berita WHERE idBerita =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            if (rows.length === 0) {
+                response.status(404).json({ message: 'Data not found' });
+            } else {
+                response.ok("Succesfuly delete", res);
             }
         }
     });
@@ -80,7 +155,7 @@ exports.getAllWisata = function(req, res){
     connection.query("SELECT * FROM wisata", function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.status(500).json({ message: 'Internal Server Error' });
         } else {
             response.ok(rows, res);
         }
@@ -96,12 +171,33 @@ exports.getWisataId = function(req, res){
             res.status(500).json({ message: 'Internal Server Error' });
         } else {
             if (rows.length === 0) {
-                res.status(404).json({ message: 'Data not found' });
+                response.status(404).json({ message: 'Data not found' });
             } else {
                 response.ok(rows, res);
             }
         }
     });
 };
+
+
+exports.addWisata = function(req, res){
+  var namaWisata = req.body.namaWisata
+  var detailWisata = req.body.detailWisata
+  var lat = req.body.lat
+  var lon = req.body.lon
+  var imageWisata = req.body.imageWisata
+
+     connection.query("INSERT INTO wisata (namaWisata, detailWisata, lat, lon,imageWisata) VALUES(?,?,?,?,?)", 
+     [namaWisata, detailWisata,lat,lon,imageWisata], function(error, rows, fields){
+         if (error) {
+             console.log(error);
+             response.ok({ message: 'Internal Server Error' }, res, 500);
+         } else {
+ 
+             response.ok(rows, res,201)
+         }
+     });
+ 
+ }
 
 /* Wisata */
