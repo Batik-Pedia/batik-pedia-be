@@ -200,4 +200,92 @@ exports.addWisata = function(req, res){
  
  }
 
+ exports.deleteWisataId = function(req, res){
+    let id = req.body.idWisata
+    connection.query("DELETE FROM wisata WHERE idWisata =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            if (rows.length === 0) {
+                response.status(404).json({ message: 'Data not found' });
+            } else {
+                response.ok("Succesfuly delete", res);
+            }
+        }
+    });
+};
+
 /* Wisata */
+
+
+
+/* Kursus */
+
+// Get All Kursus
+exports.getAllKursus = function(req, res){
+    connection.query("SELECT * FROM kursus_membatik", function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            response.ok(rows, res);
+        }
+    });
+};
+
+// Get data kursus by id
+exports.getKursusId = function(req, res){
+    let id = req.params.id;
+    connection.query("SELECT * FROM kursus_membatik WHERE idKursus = ?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            if (rows.length === 0) {
+                response.status(404).json({ message: 'Data not found' });
+            } else {
+                response.ok(rows, res);
+            }
+        }
+    });
+};
+
+
+exports.addKursus = function(req, res){
+  var namaKursus = req.body.namaKursus
+  var image = req.body.image
+  var harga = req.body.harga
+  var deskripsi = req.body.deskripsi
+
+     connection.query("INSERT INTO kursus_membatik (namaKursus, image, harga, deskripsi) VALUES(?,?,?,?)", 
+     [namaKursus,image,harga,deskripsi], function(error, rows, fields){
+         if (error) {
+             console.log(error);
+             response.ok({ message: 'Internal Server Error' }, res, 500);
+         } else {
+ 
+             response.ok(rows, res,201)
+         }
+     });
+ 
+ }
+
+ exports.deleteKursusId = function(req, res){
+    let id = req.body.idKursus
+    connection.query("DELETE FROM kursus_membatik WHERE idKursus =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            if (rows.length === 0) {
+                response.status(404).json({ message: 'Data not found' });
+            } else {
+                response.ok("Succesfuly delete", res);
+            }
+        }
+    });
+};
+
+
+/* Kursus */
