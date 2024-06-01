@@ -7,16 +7,24 @@ exports.index = function(req, res){
     response.ok("Successfully running REST API!", res);
 };
 
+const author = "Andi Salam Syahputra"
+const error404 = 'Data not found'
+const error500 ='Internal Server Error'
+
 /* Katalog  */
 
 // Get All data katalog batik
 exports.getAllKatalogBatik = function(req, res){
     connection.query("SELECT * FROM katalog_batik", function(error, rows, fields){
         if (error) {
-            console.log(error);
-            response.ok({ message: 'Internal Server Error' }, res, 500);
+            response.ok(error, res);
         } else {
-            response.ok(rows, res);
+            var data = {
+                status : 200,
+                author: author,
+                katalogBatik: rows
+            };
+            response.ok(data,res);
         }
     });
 };
@@ -27,13 +35,19 @@ exports.getKatalogBatikId = function(req, res){
     connection.query("SELECT * FROM katalog_batik WHERE idBatik = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.ok({ message: 'Internal Server Error' }, res, 500);
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    katalogBatik: rows
+                };
+                response.ok(data, res)
+            }else{
                 response.ok(rows, res);
             }
+                
         }
     });
 };
@@ -52,7 +66,7 @@ exports.addKatalogBatik = function(req, res){
     [namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon], function(error, rows, fields){
         if (error) {
             console.log(error);
-            response.ok({ message: 'Internal Server Error' }, res, 500);
+            response.ok(error,res);
         } else {
 
             response.ok(rows, res,201)
@@ -66,13 +80,9 @@ exports.deleteKatalogId = function(req, res){
     connection.query("DELETE FROM katalog_batik WHERE idBatik =?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
-                response.ok("Succesfuly delete", res);
-            }
+            response.ok("Succesfuly delete", res);
         }
     });
 };
@@ -85,10 +95,14 @@ exports.deleteKatalogId = function(req, res){
 exports.getAllBerita = function(req, res){
     connection.query("SELECT * FROM berita", function(error, rows, fields){
         if (error) {
-            console.log(error);
-            response.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error, res);
         } else {
-            response.ok(rows, res);
+            var data = {
+                status : 200,
+                author: author,
+                katalogBatik: rows
+            };
+            response.ok(data,res);
         }
     });
 };
@@ -99,13 +113,19 @@ exports.getBeritaId = function(req, res){
     connection.query("SELECT * FROM berita WHERE idBerita = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    berita: rows
+                };
+                response.ok(data,res)
+            }else{
                 response.ok(rows, res);
             }
+                
         }
     });
 };
@@ -121,7 +141,7 @@ exports.addBerita = function(req, res){
     [namaBerita, tglBerita, lokasiBerita, urlBerita,imageBerita], function(error, rows, fields){
         if (error) {
             console.log(error);
-            response.ok({ message: 'Internal Server Error' }, res, 500);
+            response.ok(error,res);
         } else {
 
             response.ok(rows, res,201)
@@ -135,13 +155,9 @@ exports.deleteBeritaId = function(req, res){
     connection.query("DELETE FROM berita WHERE idBerita =?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
                 response.ok("Succesfuly delete", res);
-            }
         }
     });
 };
@@ -154,10 +170,14 @@ exports.deleteBeritaId = function(req, res){
 exports.getAllWisata = function(req, res){
     connection.query("SELECT * FROM wisata", function(error, rows, fields){
         if (error) {
-            console.log(error);
-            response.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error, res);
         } else {
-            response.ok(rows, res);
+            var data = {
+                status : 200,
+                author: author,
+                katalogBatik: rows
+            };
+            response.ok(data,res);
         }
     });
 };
@@ -168,13 +188,19 @@ exports.getWisataId = function(req, res){
     connection.query("SELECT * FROM wisata WHERE idWisata = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    wisata: rows
+                };
+                response.ok(data, res)
+            }else{
                 response.ok(rows, res);
             }
+                
         }
     });
 };
@@ -190,8 +216,8 @@ exports.addWisata = function(req, res){
      connection.query("INSERT INTO wisata (namaWisata, detailWisata, lat, lon,imageWisata) VALUES(?,?,?,?,?)", 
      [namaWisata, detailWisata,lat,lon,imageWisata], function(error, rows, fields){
          if (error) {
-             console.log(error);
-             response.ok({ message: 'Internal Server Error' }, res, 500);
+            console.log(error);
+            response.ok(error,res);
          } else {
  
              response.ok(rows, res,201)
@@ -205,13 +231,9 @@ exports.addWisata = function(req, res){
     connection.query("DELETE FROM wisata WHERE idWisata =?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
                 response.ok("Succesfuly delete", res);
-            }
         }
     });
 };
@@ -227,7 +249,7 @@ exports.getAllKursus = function(req, res){
     connection.query("SELECT * FROM kursus_membatik", function(error, rows, fields){
         if (error) {
             console.log(error);
-            response.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
             response.ok(rows, res);
         }
@@ -240,13 +262,19 @@ exports.getKursusId = function(req, res){
     connection.query("SELECT * FROM kursus_membatik WHERE idKursus = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    kursus: rows
+                };
+                response.ok(data, res)
+            }else{
                 response.ok(rows, res);
             }
+                
         }
     });
 };
@@ -261,8 +289,8 @@ exports.addKursus = function(req, res){
      connection.query("INSERT INTO kursus_membatik (namaKursus, image, harga, deskripsi) VALUES(?,?,?,?)", 
      [namaKursus,image,harga,deskripsi], function(error, rows, fields){
          if (error) {
-             console.log(error);
-             response.ok({ message: 'Internal Server Error' }, res, 500);
+            console.log(error);
+            response.ok(error,res);
          } else {
  
              response.ok(rows, res,201)
@@ -276,13 +304,9 @@ exports.addKursus = function(req, res){
     connection.query("DELETE FROM kursus_membatik WHERE idKursus =?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            response.ok(error,res);
         } else {
-            if (rows.length === 0) {
-                response.status(404).json({ message: 'Data not found' });
-            } else {
                 response.ok("Succesfuly delete", res);
-            }
         }
     });
 };

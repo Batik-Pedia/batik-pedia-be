@@ -3,9 +3,9 @@
 exports.ok = function(values, res,status){
     var data = {
         'status' : status,
-        'values': values
+        'values': values,
+        'author': process.env.author
     };
 
     res.json(data);
-    res.end();
 }
