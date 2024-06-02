@@ -1,0 +1,186 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 02, 2024 at 03:25 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `batikpedia`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `idBerita` int(8) NOT NULL,
+  `namaBerita` varchar(255) NOT NULL,
+  `tglBerita` varchar(25) NOT NULL,
+  `lokasiBerita` varchar(25) NOT NULL,
+  `urlBerita` varchar(255) NOT NULL,
+  `imageBerita` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`idBerita`, `namaBerita`, `tglBerita`, `lokasiBerita`, `urlBerita`, `imageBerita`) VALUES
+(1, '', '04 Apr 2024 08.00', 'Solo, Indonesia', 'https://www.detik.com/jateng/wisata/d-7277135/melihat-proses-pembuatan-batik-tulis-dan-cap-di-kauman-solo', 'https://akcdn.detik.net.id/community/media/visual/2024/04/03/pembuatan-batik-tulis-dan-cap-di-kampung-batik-kauman-solo-rabu-342024-2_43.jpeg?w=700&q=90');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `katalog_batik`
+--
+
+CREATE TABLE `katalog_batik` (
+  `idBatik` int(8) NOT NULL,
+  `namaBatik` varchar(255) NOT NULL,
+  `detailBatik` text NOT NULL,
+  `sejarahBatik` text NOT NULL,
+  `penggunaan` text NOT NULL,
+  `makna` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `lat` varchar(255) NOT NULL,
+  `lon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `katalog_batik`
+--
+
+INSERT INTO `katalog_batik` (`idBatik`, `namaBatik`, `detailBatik`, `sejarahBatik`, `penggunaan`, `makna`, `image`, `lat`, `lon`) VALUES
+(1, 'Mega Mendung', 'Batik Mega Mendung adalah salah satu motif batik khas Indonesia yang berasal dari Cirebon, Jawa Barat. Motif ini memiliki karakteristik unik yang menjadikannya salah satu motif batik yang paling dikenal dan dihargai.', 'Sejarah dan Asal Usul\r\n\r\nAsal Usul: Batik Mega Mendung berasal dari wilayah Cirebon, yang dikenal sebagai salah satu pusat batik di Indonesia. Motif ini telah ada sejak zaman Kerajaan Cirebon pada abad ke-16.\r\n\r\nPengaruh Tiongkok: Motif ini dipengaruhi oleh budaya Tiongkok, terutama setelah pernikahan Sunan Gunung Jati (Syarif Hidayatullah) dengan putri Cina bernama Ong Tien. Pengaruh Tiongkok terlihat dari motif awan yang digunakan, yang sering ditemukan dalam seni rupa Tiongkok.', 'Batik Mega Mendung digunakan secara luas dalam berbagai aspek kehidupan, mulai dari pakaian tradisional seperti kebaya dan kain panjang hingga busana modern seperti gaun dan kemeja. Motif ini juga diterapkan pada aksesori seperti tas, dompet, sepatu, dan sandal, serta dekorasi rumah dan furnitur. Dalam seni dan kerajinan tangan, Batik Mega Mendung muncul dalam lukisan, karya seni, dan perhiasan. Produk komersial seperti cinderamata dan kemasan produk juga sering menampilkan motif ini. Selain itu, Batik Mega Mendung digunakan dalam upacara adat, ritual keagamaan, dan dekorasi pernikahan, mencerminkan fleksibilitas dan daya tarik estetika yang kuat.', 'Batik Mega Mendung memiliki makna yang mendalam, melambangkan ketenangan, kesabaran, dan keteguhan hati melalui motif awan mendungnya. Gradasi warna mencerminkan transformasi dan keseimbangan alam. Berakar dari pengaruh budaya Tiongkok, motif ini mencerminkan akulturasi dan identitas kebanggaan masyarakat Cirebon. Selain itu, pola berulangnya menggambarkan semangat gotong royong dan kebersamaan, serta mengingatkan hubungan harmonis dengan alam dan Tuhan.', 'fsdfsdfdfsdf', '0,42342', '09,42342'),
+(2, 'Kawung', 'Batik Kawung adalah salah satu motif batik tradisional Indonesia yang sangat terkenal dan memiliki makna mendalam. Motif ini umumnya terdiri dari pola lingkaran simetris yang menyerupai buah aren (kolang-kaling) atau buah kelapa. Lingkaran-lingkaran ini biasanya disusun dalam pola geometris yang rapi dan simetris, mencerminkan kesederhanaan namun dengan estetika yang elegan.\n\nSecara filosofi, Batik Kawung melambangkan kejujuran, kesucian, dan kebijaksanaan. Pola lingkarannya sering diartikan sebagai gambaran dari empat arah mata angin, yang mencerminkan keseimbangan dan keteraturan dalam kehidupan. Batik Kawung biasanya digunakan dalam upacara-upacara penting, dan dulunya motif ini hanya dikenakan oleh keluarga kerajaan atau bangsawan sebagai simbol status dan kemuliaan.\n\nMotif Batik Kawung masih terus dipelihara dan digunakan hingga kini, tidak hanya sebagai warisan budaya tetapi juga sebagai inspirasi dalam desain modern.', 'Batik Kawung adalah salah satu motif batik tertua di Indonesia, yang diyakini telah ada sejak zaman Kerajaan Mataram Kuno pada abad ke-9 dan 10. Motif ini, yang terdiri dari pola lingkaran simetris menyerupai buah aren atau kolang-kaling, melambangkan kesucian, kebijaksanaan, dan keseimbangan. Awalnya, Batik Kawung digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan sebagai simbol status dan kekuasaan. Seiring berjalannya waktu, motif ini menyebar dan diadopsi oleh masyarakat luas, menjadi salah satu warisan budaya Indonesia yang tetap populer dan dihormati hingga kini.', 'Batik Kawung awalnya digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan di Kerajaan Mataram dan Yogyakarta sebagai simbol status dan kekuasaan. Motif ini dikenakan dalam upacara-upacara penting dan acara formal, mencerminkan nilai-nilai kejujuran, kesucian, dan kebijaksanaan. Seiring waktu, Batik Kawung menyebar ke masyarakat luas dan menjadi bagian dari pakaian tradisional yang digunakan dalam berbagai kesempatan, termasuk pernikahan, acara adat, dan kegiatan resmi. Kini, Batik Kawung juga diaplikasikan dalam berbagai produk fashion dan dekorasi modern, tetap menjaga relevansinya dalam budaya kontemporer.', 'Batik Kawung memiliki makna filosofis yang mendalam, melambangkan kesucian, kesempurnaan, dan kebijaksanaan. Pola lingkaran simetrisnya menggambarkan keseimbangan dan harmoni dalam kehidupan, serta mengajarkan pentingnya menjaga keseimbangan antara berbagai aspek kehidupan. Selain itu, motif ini mencerminkan kejujuran dan keterbukaan, dengan desain yang sederhana namun elegan, mengingatkan pada ketulusan dan kejelasan hati dalam bertindak dan berpikir.', 'https://www.batikprabuseno.com/artikel/wp-content/uploads/2022/11/batik-kawung-01-1536x1536.png', '0,8723423', '423,3423'),
+(3, 'Kawung', 'Batik Kawung adalah salah satu motif batik tradisional Indonesia yang sangat terkenal dan memiliki makna mendalam. Motif ini umumnya terdiri dari pola lingkaran simetris yang menyerupai buah aren (kolang-kaling) atau buah kelapa. Lingkaran-lingkaran ini biasanya disusun dalam pola geometris yang rapi dan simetris, mencerminkan kesederhanaan namun dengan estetika yang elegan.\n\nSecara filosofi, Batik Kawung melambangkan kejujuran, kesucian, dan kebijaksanaan. Pola lingkarannya sering diartikan sebagai gambaran dari empat arah mata angin, yang mencerminkan keseimbangan dan keteraturan dalam kehidupan. Batik Kawung biasanya digunakan dalam upacara-upacara penting, dan dulunya motif ini hanya dikenakan oleh keluarga kerajaan atau bangsawan sebagai simbol status dan kemuliaan.\n\nMotif Batik Kawung masih terus dipelihara dan digunakan hingga kini, tidak hanya sebagai warisan budaya tetapi juga sebagai inspirasi dalam desain modern.', 'Batik Kawung adalah salah satu motif batik tertua di Indonesia, yang diyakini telah ada sejak zaman Kerajaan Mataram Kuno pada abad ke-9 dan 10. Motif ini, yang terdiri dari pola lingkaran simetris menyerupai buah aren atau kolang-kaling, melambangkan kesucian, kebijaksanaan, dan keseimbangan. Awalnya, Batik Kawung digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan sebagai simbol status dan kekuasaan. Seiring berjalannya waktu, motif ini menyebar dan diadopsi oleh masyarakat luas, menjadi salah satu warisan budaya Indonesia yang tetap populer dan dihormati hingga kini.', 'Batik Kawung awalnya digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan di Kerajaan Mataram dan Yogyakarta sebagai simbol status dan kekuasaan. Motif ini dikenakan dalam upacara-upacara penting dan acara formal, mencerminkan nilai-nilai kejujuran, kesucian, dan kebijaksanaan. Seiring waktu, Batik Kawung menyebar ke masyarakat luas dan menjadi bagian dari pakaian tradisional yang digunakan dalam berbagai kesempatan, termasuk pernikahan, acara adat, dan kegiatan resmi. Kini, Batik Kawung juga diaplikasikan dalam berbagai produk fashion dan dekorasi modern, tetap menjaga relevansinya dalam budaya kontemporer.', 'Batik Kawung memiliki makna filosofis yang mendalam, melambangkan kesucian, kesempurnaan, dan kebijaksanaan. Pola lingkaran simetrisnya menggambarkan keseimbangan dan harmoni dalam kehidupan, serta mengajarkan pentingnya menjaga keseimbangan antara berbagai aspek kehidupan. Selain itu, motif ini mencerminkan kejujuran dan keterbukaan, dengan desain yang sederhana namun elegan, mengingatkan pada ketulusan dan kejelasan hati dalam bertindak dan berpikir.', 'https://www.batikprabuseno.com/artikel/wp-content/uploads/2022/11/batik-kawung-01-1536x1536.png', '0,8723423', '423,3423'),
+(4, 'Kawung', 'Batik Kawung adalah salah satu motif batik tradisional Indonesia yang sangat terkenal dan memiliki makna mendalam. Motif ini umumnya terdiri dari pola lingkaran simetris yang menyerupai buah aren (kolang-kaling) atau buah kelapa. Lingkaran-lingkaran ini biasanya disusun dalam pola geometris yang rapi dan simetris, mencerminkan kesederhanaan namun dengan estetika yang elegan.\n\nSecara filosofi, Batik Kawung melambangkan kejujuran, kesucian, dan kebijaksanaan. Pola lingkarannya sering diartikan sebagai gambaran dari empat arah mata angin, yang mencerminkan keseimbangan dan keteraturan dalam kehidupan. Batik Kawung biasanya digunakan dalam upacara-upacara penting, dan dulunya motif ini hanya dikenakan oleh keluarga kerajaan atau bangsawan sebagai simbol status dan kemuliaan.\n\nMotif Batik Kawung masih terus dipelihara dan digunakan hingga kini, tidak hanya sebagai warisan budaya tetapi juga sebagai inspirasi dalam desain modern.', 'Batik Kawung adalah salah satu motif batik tertua di Indonesia, yang diyakini telah ada sejak zaman Kerajaan Mataram Kuno pada abad ke-9 dan 10. Motif ini, yang terdiri dari pola lingkaran simetris menyerupai buah aren atau kolang-kaling, melambangkan kesucian, kebijaksanaan, dan keseimbangan. Awalnya, Batik Kawung digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan sebagai simbol status dan kekuasaan. Seiring berjalannya waktu, motif ini menyebar dan diadopsi oleh masyarakat luas, menjadi salah satu warisan budaya Indonesia yang tetap populer dan dihormati hingga kini.', 'Batik Kawung awalnya digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan di Kerajaan Mataram dan Yogyakarta sebagai simbol status dan kekuasaan. Motif ini dikenakan dalam upacara-upacara penting dan acara formal, mencerminkan nilai-nilai kejujuran, kesucian, dan kebijaksanaan. Seiring waktu, Batik Kawung menyebar ke masyarakat luas dan menjadi bagian dari pakaian tradisional yang digunakan dalam berbagai kesempatan, termasuk pernikahan, acara adat, dan kegiatan resmi. Kini, Batik Kawung juga diaplikasikan dalam berbagai produk fashion dan dekorasi modern, tetap menjaga relevansinya dalam budaya kontemporer.', 'Batik Kawung memiliki makna filosofis yang mendalam, melambangkan kesucian, kesempurnaan, dan kebijaksanaan. Pola lingkaran simetrisnya menggambarkan keseimbangan dan harmoni dalam kehidupan, serta mengajarkan pentingnya menjaga keseimbangan antara berbagai aspek kehidupan. Selain itu, motif ini mencerminkan kejujuran dan keterbukaan, dengan desain yang sederhana namun elegan, mengingatkan pada ketulusan dan kejelasan hati dalam bertindak dan berpikir.', 'https://www.batikprabuseno.com/artikel/wp-content/uploads/2022/11/batik-kawung-01-1536x1536.png', '0,8723423', '423,3423'),
+(5, 'Kawung', 'Batik Kawung adalah salah satu motif batik tradisional Indonesia yang sangat terkenal dan memiliki makna mendalam. Motif ini umumnya terdiri dari pola lingkaran simetris yang menyerupai buah aren (kolang-kaling) atau buah kelapa. Lingkaran-lingkaran ini biasanya disusun dalam pola geometris yang rapi dan simetris, mencerminkan kesederhanaan namun dengan estetika yang elegan.\n\nSecara filosofi, Batik Kawung melambangkan kejujuran, kesucian, dan kebijaksanaan. Pola lingkarannya sering diartikan sebagai gambaran dari empat arah mata angin, yang mencerminkan keseimbangan dan keteraturan dalam kehidupan. Batik Kawung biasanya digunakan dalam upacara-upacara penting, dan dulunya motif ini hanya dikenakan oleh keluarga kerajaan atau bangsawan sebagai simbol status dan kemuliaan.\n\nMotif Batik Kawung masih terus dipelihara dan digunakan hingga kini, tidak hanya sebagai warisan budaya tetapi juga sebagai inspirasi dalam desain modern.', 'Batik Kawung adalah salah satu motif batik tertua di Indonesia, yang diyakini telah ada sejak zaman Kerajaan Mataram Kuno pada abad ke-9 dan 10. Motif ini, yang terdiri dari pola lingkaran simetris menyerupai buah aren atau kolang-kaling, melambangkan kesucian, kebijaksanaan, dan keseimbangan. Awalnya, Batik Kawung digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan sebagai simbol status dan kekuasaan. Seiring berjalannya waktu, motif ini menyebar dan diadopsi oleh masyarakat luas, menjadi salah satu warisan budaya Indonesia yang tetap populer dan dihormati hingga kini.', 'Batik Kawung awalnya digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan di Kerajaan Mataram dan Yogyakarta sebagai simbol status dan kekuasaan. Motif ini dikenakan dalam upacara-upacara penting dan acara formal, mencerminkan nilai-nilai kejujuran, kesucian, dan kebijaksanaan. Seiring waktu, Batik Kawung menyebar ke masyarakat luas dan menjadi bagian dari pakaian tradisional yang digunakan dalam berbagai kesempatan, termasuk pernikahan, acara adat, dan kegiatan resmi. Kini, Batik Kawung juga diaplikasikan dalam berbagai produk fashion dan dekorasi modern, tetap menjaga relevansinya dalam budaya kontemporer.', 'Batik Kawung memiliki makna filosofis yang mendalam, melambangkan kesucian, kesempurnaan, dan kebijaksanaan. Pola lingkaran simetrisnya menggambarkan keseimbangan dan harmoni dalam kehidupan, serta mengajarkan pentingnya menjaga keseimbangan antara berbagai aspek kehidupan. Selain itu, motif ini mencerminkan kejujuran dan keterbukaan, dengan desain yang sederhana namun elegan, mengingatkan pada ketulusan dan kejelasan hati dalam bertindak dan berpikir.', 'https://www.batikprabuseno.com/artikel/wp-content/uploads/2022/11/batik-kawung-01-1536x1536.png', '0,8723423', '423,3423'),
+(6, 'Kawung', 'Batik Kawung adalah salah satu motif batik tradisional Indonesia yang sangat terkenal dan memiliki makna mendalam. Motif ini umumnya terdiri dari pola lingkaran simetris yang menyerupai buah aren (kolang-kaling) atau buah kelapa. Lingkaran-lingkaran ini biasanya disusun dalam pola geometris yang rapi dan simetris, mencerminkan kesederhanaan namun dengan estetika yang elegan.\n\nSecara filosofi, Batik Kawung melambangkan kejujuran, kesucian, dan kebijaksanaan. Pola lingkarannya sering diartikan sebagai gambaran dari empat arah mata angin, yang mencerminkan keseimbangan dan keteraturan dalam kehidupan. Batik Kawung biasanya digunakan dalam upacara-upacara penting, dan dulunya motif ini hanya dikenakan oleh keluarga kerajaan atau bangsawan sebagai simbol status dan kemuliaan.\n\nMotif Batik Kawung masih terus dipelihara dan digunakan hingga kini, tidak hanya sebagai warisan budaya tetapi juga sebagai inspirasi dalam desain modern.', 'Batik Kawung adalah salah satu motif batik tertua di Indonesia, yang diyakini telah ada sejak zaman Kerajaan Mataram Kuno pada abad ke-9 dan 10. Motif ini, yang terdiri dari pola lingkaran simetris menyerupai buah aren atau kolang-kaling, melambangkan kesucian, kebijaksanaan, dan keseimbangan. Awalnya, Batik Kawung digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan sebagai simbol status dan kekuasaan. Seiring berjalannya waktu, motif ini menyebar dan diadopsi oleh masyarakat luas, menjadi salah satu warisan budaya Indonesia yang tetap populer dan dihormati hingga kini.', 'Batik Kawung awalnya digunakan secara eksklusif oleh keluarga kerajaan dan bangsawan di Kerajaan Mataram dan Yogyakarta sebagai simbol status dan kekuasaan. Motif ini dikenakan dalam upacara-upacara penting dan acara formal, mencerminkan nilai-nilai kejujuran, kesucian, dan kebijaksanaan. Seiring waktu, Batik Kawung menyebar ke masyarakat luas dan menjadi bagian dari pakaian tradisional yang digunakan dalam berbagai kesempatan, termasuk pernikahan, acara adat, dan kegiatan resmi. Kini, Batik Kawung juga diaplikasikan dalam berbagai produk fashion dan dekorasi modern, tetap menjaga relevansinya dalam budaya kontemporer.', 'Batik Kawung memiliki makna filosofis yang mendalam, melambangkan kesucian, kesempurnaan, dan kebijaksanaan. Pola lingkaran simetrisnya menggambarkan keseimbangan dan harmoni dalam kehidupan, serta mengajarkan pentingnya menjaga keseimbangan antara berbagai aspek kehidupan. Selain itu, motif ini mencerminkan kejujuran dan keterbukaan, dengan desain yang sederhana namun elegan, mengingatkan pada ketulusan dan kejelasan hati dalam bertindak dan berpikir.', 'https://www.batikprabuseno.com/artikel/wp-content/uploads/2022/11/batik-kawung-01-1536x1536.png', '0,8723423', '423,3423');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kursus_membatik`
+--
+
+CREATE TABLE `kursus_membatik` (
+  `idKursus` int(8) NOT NULL,
+  `namaKursus` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `harga` varchar(150) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video_batik`
+--
+
+CREATE TABLE `video_batik` (
+  `idVideo` int(8) NOT NULL,
+  `judulVideo` varchar(255) NOT NULL,
+  `imgVideo` varchar(255) NOT NULL,
+  `urlVideo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wisata`
+--
+
+CREATE TABLE `wisata` (
+  `idWisata` int(8) NOT NULL,
+  `namaWisata` varchar(50) NOT NULL,
+  `detailWisata` text NOT NULL,
+  `lat` varchar(255) NOT NULL,
+  `lon` varchar(255) NOT NULL,
+  `imageWisata` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wisata`
+--
+
+INSERT INTO `wisata` (`idWisata`, `namaWisata`, `detailWisata`, `lat`, `lon`, `imageWisata`) VALUES
+(1, 'Kampung Batik Laweyan', 'Kampung batik Laweyan adalah salah satu destinasi wisata di Kota Solo. Kampung Batik Laweyan terletak di Jl. Dr. Rajiman No.521, Laweyan, Kecamatan Laweyan, Kota Solo.\r\nKawasan yang menjadi pusat batik di Solo ini juga termasuk kawasan cagar budaya. Keberadaan kawasan ini sengaja dilakukan Pemkot Solo untuk menarik wisatawan. Tidak hanya domestik, tetapi juga wisatawan asing untuk melihat-lihat kerajinan batik.\r\n\r\nWisata Kampung Batik Laweyan ini berada di Kecamatan Laweyan. Mayoritas warga yang tinggal di kampung ini adalah perajin batik. Dikutip dari laman surakarta.go.id, Senin (6/3/2023)kampung ini bergerak di klaster wisata di bawah Forum Pengembangan Kampung Batik Laweyan (FPKBL).', '0.823423', '0.823423', 'https://akcdn.detik.net.id/community/media/visual/2017/05/16/b8767ea1-b201-498d-ab3d-592eebc4a796_169.jpg?w=700&q=90');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`idBerita`);
+
+--
+-- Indexes for table `katalog_batik`
+--
+ALTER TABLE `katalog_batik`
+  ADD PRIMARY KEY (`idBatik`);
+
+--
+-- Indexes for table `kursus_membatik`
+--
+ALTER TABLE `kursus_membatik`
+  ADD PRIMARY KEY (`idKursus`);
+
+--
+-- Indexes for table `video_batik`
+--
+ALTER TABLE `video_batik`
+  ADD PRIMARY KEY (`idVideo`);
+
+--
+-- Indexes for table `wisata`
+--
+ALTER TABLE `wisata`
+  ADD PRIMARY KEY (`idWisata`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `idBerita` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `katalog_batik`
+--
+ALTER TABLE `katalog_batik`
+  MODIFY `idBatik` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `kursus_membatik`
+--
+ALTER TABLE `kursus_membatik`
+  MODIFY `idKursus` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `video_batik`
+--
+ALTER TABLE `video_batik`
+  MODIFY `idVideo` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wisata`
+--
+ALTER TABLE `wisata`
+  MODIFY `idWisata` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;

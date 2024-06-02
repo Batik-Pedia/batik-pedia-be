@@ -313,3 +313,74 @@ exports.addKursus = function(req, res){
 
 
 /* Kursus */
+
+
+/* Video Batik */
+
+// Get All Kursus
+exports.getAllVideo = function(req, res){
+    connection.query("SELECT * FROM video_batik", function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+            response.ok(rows, res);
+        }
+    });
+};
+
+// Get data kursus by id
+exports.getVidBatikId = function(req, res){
+    let id = req.params.id;
+    connection.query("SELECT * FROM video_batik WHERE idKursus = ?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    kursus: rows
+                };
+                response.ok(data, res)
+            }else{
+                response.ok(rows, res);
+            }
+                
+        }
+    });
+};
+
+
+exports.addVideoBatik = function(req, res){
+  var judulVideo = req.body.judulVideo
+  var imgVideo = req.body.imgVideo
+  var urlVideo = req.body.urlVideo
+
+     connection.query("INSERT INTO video_batik (judulVideo,imgVideo,urlVideo) VALUES(?,?,?)", 
+     [judulVideo,imgVideo,urlVideo], function(error, rows, fields){
+         if (error) {
+            console.log(error);
+            response.ok(error,res);
+         } else {
+ 
+             response.ok(rows, res,201)
+         }
+     });
+ 
+ }
+
+ exports.deleteVideoBatik = function(req, res){
+    let id = req.body.idVideo
+    connection.query("DELETE FROM video_batik WHERE idKursus =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+                response.ok("Succesfuly delete", res);
+        }
+    });
+};
+
+/* Video Batik */
