@@ -54,4 +54,36 @@ module.exports = function(app){
     .delete(jsonku.deleteWisataId);
 
     /* Wisata */
+
+  /* edukasi */
+  app.route('/kursus')
+  .get(jsonku.getAllKursus);
+
+  app.route('/kursus/:id')
+  .get(jsonku.getKursusId);
+
+  app.route('/add-kursus')
+  .post(jsonku.addKursus);
+
+  app.route('/delete-kursus')
+  .delete(jsonku.deleteKursusId);
+
+  /* edukasi */
+
+
+
+   /* Video */
+   app.route('/video-batik')
+   .get(jsonku.getAllVideo);
+ 
+   app.route('/video-batik/:id')
+   .get(jsonku.getVidBatikId);
+ 
+   app.route('/add-video-batik')
+   .post(jsonku.addVideoBatik);
+ 
+   app.route('/delete-video-batik')
+   .delete(jsonku.deleteVideoBatik);
+ 
+   /* Video */
 }
