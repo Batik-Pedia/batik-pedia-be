@@ -61,9 +61,11 @@ exports.addKatalogBatik = function(req, res){
     var image = req.body.image;
     var lat = req.body.lat;
     var lon = req.body.lon;
+    var jenisBatik = req.body.jenisBatik;
+    var wilayah = req.body.wilayah;
 
-    connection.query("INSERT INTO katalog_batik (namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon) VALUES(?,?,?,?,?,?,?,?)", 
-    [namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon], function(error, rows, fields){
+    connection.query("INSERT INTO katalog_batik (namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon,jenisBatik,wilayah) VALUES(?,?,?,?,?,?,?,?,?,?)", 
+    [namaBatik,detailBatik,sejarahBatik,penggunaan,makna,image,lat,lon,jenisBatik,wilayah], function(error, rows, fields){
         if (error) {
             console.log(error);
             response.ok(error,res);
@@ -395,3 +397,81 @@ exports.addVideoBatik = function(req, res){
 };
 
 /* Video Batik */
+
+
+
+/* Nusantara */
+
+// Get All Nusantara
+exports.getAllProvinsi = function(req, res){
+    connection.query("SELECT * FROM provinsi", function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+            var data = {
+                status : 200,
+                author: author,
+                video: rows
+            };
+
+            response.ok(rows, res);
+        }
+    });
+};
+
+// Get data provinsi by id
+exports.getProvinsiId = function(req, res){
+    let id = req.params.id;
+    connection.query("SELECT * FROM provinsi WHERE idKursus = ?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+            if(rows.length === 0){
+                var data = {
+                    status : 404,
+                    message: error404,
+                    video: rows
+                };
+                response.ok(data, res)
+            }else{
+                response.ok(rows[0], res);
+            }
+                
+        }
+    });
+};
+
+
+exports.addProvinsi = function(req, res){
+  var namaProvinsi = req.body.namaProvinsi
+  var imgProvinsi = req.body.imgProvinsi
+  var detailProvinsi = req.body.detailProvinsi
+
+     connection.query("INSERT INTO provinsi (namaProvinsi,imgProvinsi,detailProvinsi) VALUES(?,?,?)", 
+     [namaProvinsi,imgProvinsi,detailProvinsi], function(error, rows, fields){
+         if (error) {
+            console.log(error);
+            response.ok(error,res);
+         } else {
+ 
+             response.ok(rows, res,201)
+         }
+     });
+ 
+ }
+
+ exports.deleteProvinsi = function(req, res){
+    let id = req.body.idProvinsi
+    connection.query("DELETE FROM provinsi WHERE idKursus =?", [id], function(error, rows, fields){
+        if (error) {
+            console.log(error);
+            response.ok(error,res);
+        } else {
+                response.ok("Succesfuly delete", res);
+        }
+    });
+};
+
+/* Nusantara*/

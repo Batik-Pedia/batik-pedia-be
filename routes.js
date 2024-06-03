@@ -86,4 +86,20 @@ module.exports = function(app){
    .delete(jsonku.deleteVideoBatik);
  
    /* Video */
+
+
+    /* Provinsi */
+    app.route('/provinsi')
+    .get(jsonku.getAllProvinsi);
+  
+    app.route('/provinsi/:id')
+    .get(jsonku.getProvinsiId);
+  
+    app.route('/add-provinsi')
+    .post(jsonku.addProvinsi);
+  
+    app.route('/delete-provinsi')
+    .delete(jsonku.deleteProvinsi);
+  
+    /* Provinsi */
 }
