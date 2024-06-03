@@ -45,7 +45,7 @@ exports.getKatalogBatikId = function(req, res){
                 };
                 response.ok(data, res)
             }else{
-                response.ok(rows, res);
+                response.ok(rows[0], res);
             }
                 
         }
@@ -68,7 +68,6 @@ exports.addKatalogBatik = function(req, res){
             console.log(error);
             response.ok(error,res);
         } else {
-
             response.ok(rows, res,201)
         }
     });
@@ -100,7 +99,7 @@ exports.getAllBerita = function(req, res){
             var data = {
                 status : 200,
                 author: author,
-                katalogBatik: rows
+                berita: rows
             };
             response.ok(data,res);
         }
@@ -123,7 +122,7 @@ exports.getBeritaId = function(req, res){
                 };
                 response.ok(data,res)
             }else{
-                response.ok(rows, res);
+                response.ok(rows[0], res);
             }
                 
         }
@@ -175,7 +174,7 @@ exports.getAllWisata = function(req, res){
             var data = {
                 status : 200,
                 author: author,
-                katalogBatik: rows
+                wisata: rows
             };
             response.ok(data,res);
         }
@@ -198,7 +197,7 @@ exports.getWisataId = function(req, res){
                 };
                 response.ok(data, res)
             }else{
-                response.ok(rows, res);
+                response.ok(rows[0], res);
             }
                 
         }
@@ -219,7 +218,6 @@ exports.addWisata = function(req, res){
             console.log(error);
             response.ok(error,res);
          } else {
- 
              response.ok(rows, res,201)
          }
      });
@@ -251,7 +249,14 @@ exports.getAllKursus = function(req, res){
             console.log(error);
             response.ok(error,res);
         } else {
-            response.ok(rows, res);
+
+            var data = {
+                status : 200,
+                author: author,
+                kursus: rows
+            };
+
+            response.ok(data, res);
         }
     });
 };
@@ -272,7 +277,7 @@ exports.getKursusId = function(req, res){
                 };
                 response.ok(data, res)
             }else{
-                response.ok(rows, res);
+                response.ok(rows[0], res);
             }
                 
         }
@@ -324,6 +329,12 @@ exports.getAllVideo = function(req, res){
             console.log(error);
             response.ok(error,res);
         } else {
+            var data = {
+                status : 200,
+                author: author,
+                video: rows
+            };
+
             response.ok(rows, res);
         }
     });
@@ -341,11 +352,11 @@ exports.getVidBatikId = function(req, res){
                 var data = {
                     status : 404,
                     message: error404,
-                    kursus: rows
+                    video: rows
                 };
                 response.ok(data, res)
             }else{
-                response.ok(rows, res);
+                response.ok(rows[0], res);
             }
                 
         }

@@ -55,7 +55,7 @@ module.exports = function(app){
 
     /* Wisata */
 
-  /* edukasi */
+  /* kursus */
   app.route('/kursus')
   .get(jsonku.getAllKursus);
 
@@ -68,7 +68,7 @@ module.exports = function(app){
   app.route('/delete-kursus')
   .delete(jsonku.deleteKursusId);
 
-  /* edukasi */
+  /* kursus*/
 
 
 
