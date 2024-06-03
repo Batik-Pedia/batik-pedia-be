@@ -292,9 +292,10 @@ exports.addKursus = function(req, res){
   var image = req.body.image
   var harga = req.body.harga
   var deskripsi = req.body.deskripsi
+  var urlKursus = req.body.urlKursus
 
-     connection.query("INSERT INTO kursus_membatik (namaKursus, image, harga, deskripsi) VALUES(?,?,?,?)", 
-     [namaKursus,image,harga,deskripsi], function(error, rows, fields){
+     connection.query("INSERT INTO kursus_membatik (namaKursus, image, harga, deskripsi,urlKursus) VALUES(?,?,?,?,?)", 
+     [namaKursus,image,harga,deskripsi,urlKursus], function(error, rows, fields){
          if (error) {
             console.log(error);
             response.ok(error,res);
