@@ -424,7 +424,7 @@ exports.getAllProvinsi = function(req, res){
 // Get data provinsi by id
 exports.getProvinsiId = function(req, res){
     let id = req.params.id;
-    connection.query("SELECT * FROM provinsi WHERE idKursus = ?", [id], function(error, rows, fields){
+    connection.query("SELECT * FROM provinsi WHERE idProvinsi = ?", [id], function(error, rows, fields){
         if (error) {
             console.log(error);
             response.ok(error,res);
