@@ -56,6 +56,7 @@ exports.getAllKatalogBatik = function(req, res){
 
 
 
+
 // Get data katalog batik by id
 exports.getKatalogBatikId = function(req, res){
     let id = req.params.id;
