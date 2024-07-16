@@ -4,102 +4,102 @@ module.exports = function(app){
     var jsonku = require("./controller");
 
     app.route('/')
-    .get(jsonku.index);
+        .get(jsonku.index);
 
     /* Katalog */
 
     app.route('/katalog')
-    .get(jsonku.getAllKatalogBatik);
+        .get(jsonku.getAllKatalogBatik);
 
     app.route('/katalog/:id')
-    .get(jsonku.getKatalogBatikId);
+        .get(jsonku.getKatalogBatikId);
 
     app.route('/add-katalog')
-    .post(jsonku.addKatalogBatik);
+        .post(jsonku.addKatalogBatik);
 
     app.route('/delete-katalog')
-    .delete(jsonku.deleteKatalogId);
+        .delete(jsonku.deleteKatalogId);
 
     /* Katalog */
 
     /* Berita */
 
     app.route('/berita')
-    .get(jsonku.getAllBerita);
+        .get(jsonku.getAllBerita);
 
     app.route('/berita/:id')
-    .get(jsonku.getBeritaId);
+        .get(jsonku.getBeritaId);
 
     app.route('/add-berita')
-    .post(jsonku.addBerita);
+        .post(jsonku.addBerita);
 
     app.route('/delete-berita')
-    .delete(jsonku.deleteBeritaId);
+        .delete(jsonku.deleteBeritaId);
 
- 
+
 
     /* Berita */
 
     /* Wisata */
     app.route('/wisata')
-    .get(jsonku.getAllWisata);
+        .get(jsonku.getAllWisata);
 
     app.route('/wisata/:id')
-    .get(jsonku.getWisataId);
+        .get(jsonku.getWisataId);
 
     app.route('/add-wisata')
-    .post(jsonku.addWisata);
+        .post(jsonku.addWisata);
 
     app.route('/delete-wisata')
-    .delete(jsonku.deleteWisataId);
+        .delete(jsonku.deleteWisataId);
 
     /* Wisata */
 
-  /* kursus */
-  app.route('/kursus')
-  .get(jsonku.getAllKursus);
+    /* kursus */
+    app.route('/kursus')
+        .get(jsonku.getAllKursus);
 
-  app.route('/kursus/:id')
-  .get(jsonku.getKursusId);
+    app.route('/kursus/:id')
+        .get(jsonku.getKursusId);
 
-  app.route('/add-kursus')
-  .post(jsonku.addKursus);
+    app.route('/add-kursus')
+        .post(jsonku.addKursus);
 
-  app.route('/delete-kursus')
-  .delete(jsonku.deleteKursusId);
+    app.route('/delete-kursus')
+        .delete(jsonku.deleteKursusId);
 
-  /* kursus*/
+    /* kursus*/
 
 
 
-   /* Video */
-   app.route('/video-batik')
-   .get(jsonku.getAllVideo);
- 
-   app.route('/video-batik/:id')
-   .get(jsonku.getVidBatikId);
- 
-   app.route('/add-video-batik')
-   .post(jsonku.addVideoBatik);
- 
-   app.route('/delete-video-batik')
-   .delete(jsonku.deleteVideoBatik);
- 
-   /* Video */
+    /* Video */
+    app.route('/video-batik')
+        .get(jsonku.getAllVideo);
+
+    app.route('/video-batik/:id')
+        .get(jsonku.getVidBatikId);
+
+    app.route('/add-video-batik')
+        .post(jsonku.addVideoBatik);
+
+    app.route('/delete-video-batik')
+        .delete(jsonku.deleteVideoBatik);
+
+    /* Video */
 
 
     /* Provinsi */
     app.route('/provinsi')
-    .get(jsonku.getAllProvinsi);
-  
+        .get(jsonku.getAllProvinsi);
+
     app.route('/provinsi/:id')
-    .get(jsonku.getProvinsiId);
-  
+        .get(jsonku.getProvinsiId);
+
     app.route('/add-provinsi')
-    .post(jsonku.addProvinsi);
-  
+        .post(jsonku.addProvinsi);
+
     app.route('/delete-provinsi')
-    .delete(jsonku.deleteProvinsi);
-  
+        .delete(jsonku.deleteProvinsi);
+
     /* Provinsi */
 }

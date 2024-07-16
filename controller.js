@@ -56,7 +56,6 @@ exports.getAllKatalogBatik = function(req, res){
 
 
 
-
 // Get data katalog batik by id
 exports.getKatalogBatikId = function(req, res){
     let id = req.params.id;
@@ -241,9 +240,10 @@ exports.addWisata = function(req, res){
     var lat = req.body.lat
     var lon = req.body.lon
     var imageWisata = req.body.imageWisata
+    var wilayah = req.body.wilayah
 
-    connection.query("INSERT INTO wisata (namaWisata, detailWisata, lat, lon,imageWisata) VALUES(?,?,?,?,?)",
-        [namaWisata, detailWisata,lat,lon,imageWisata], function(error, rows){
+    connection.query("INSERT INTO wisata (namaWisata, detailWisata, lat, lon,imageWisata,wilayah) VALUES(?,?,?,?,?,?)",
+        [namaWisata, detailWisata,lat,lon,imageWisata,wilayah], function(error, rows){
             if (error) {
                 console.log(error);
                 response.ok(error,res);
